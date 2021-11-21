@@ -10,6 +10,8 @@ public class App {
   public static void main(String[] args) throws SQLException {
     
     // comment
+    // comment
+    // int x = 5;
 
     DatabaseClient databaseClient = new DatabaseClient();
 
