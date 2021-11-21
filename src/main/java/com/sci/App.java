@@ -8,6 +8,8 @@ import java.util.List;
 public class App {
 
   public static void main(String[] args) throws SQLException {
+    
+    // comment
 
     DatabaseClient databaseClient = new DatabaseClient();
 
