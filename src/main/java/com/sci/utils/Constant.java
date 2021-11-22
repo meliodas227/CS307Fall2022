@@ -7,4 +7,5 @@ public interface Constant {
   String PASSWORD = "system";
 
   String SELECT_EMPLOYEES = "select * from hr.employees";
+  String SELECT_DEPARTMENTS = "select * from hr.departments";
 }
