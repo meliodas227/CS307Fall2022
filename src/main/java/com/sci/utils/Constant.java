@@ -8,4 +8,6 @@ public interface Constant {
 
   String SELECT_EMPLOYEES = "select * from hr.employees";
   String SELECT_DEPARTMENTS = "select * from hr.departments";
+  String SELECT_JOB_GRADES = "select * from hr.job_grades";
+  String SELECT_LOCATIONS = "select * from hr.locations";
 }

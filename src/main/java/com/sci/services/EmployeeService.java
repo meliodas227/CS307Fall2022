@@ -36,6 +36,14 @@ public class EmployeeService implements AutoCloseable {
         employee.setId(resultSet.getInt("employee_id"));
         employee.setLastName(resultSet.getString("last_name"));
         employee.setDepartmentId(resultSet.getInt("department_id"));
+        employee.setCommetionPct(resultSet.getInt("commission_pct"));
+        employee.setEmail(resultSet.getString("email"));
+        employee.setFirstName(resultSet.getString("first_name"));
+        employee.setHireDate(resultSet.getString("hire_date"));
+        employee.setJobId(resultSet.getString("job_id"));
+        employee.setManagerId(resultSet.getInt("manager_id"));
+        employee.setPhoneNumber(resultSet.getString("phone_number"));
+        employee.setSalary(resultSet.getInt("salary"));
 
         res.add(employee);
 
