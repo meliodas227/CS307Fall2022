@@ -8,4 +8,5 @@ public interface Constant {
 
   String SELECT_EMPLOYEES = "select * from hr.employees";
   String SELECT_DEPARTMENTS = "select * from hr.departments";
+  String SELECT_DEPARTMENT_BY_ID = "select * from hr.departments where department_id = ?";
 }

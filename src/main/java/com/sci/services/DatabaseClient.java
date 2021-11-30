@@ -24,6 +24,8 @@ public class DatabaseClient implements AutoCloseable {
   @Override
   public void close() throws SQLException {
     connection.close();
+    employeeService.close();
+    departmentService.close();
   }
 
   public List<Employee> getAllEmployees() {
@@ -32,6 +34,10 @@ public class DatabaseClient implements AutoCloseable {
 
   public List<Department> getAllDepartments() {
     return departmentService.getAll();
+  }
+
+  public Department getDepartmentById(int id) {
+    return departmentService.getById(id);
   }
 
 }

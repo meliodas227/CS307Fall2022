@@ -12,15 +12,16 @@ import java.util.List;
 public class DepartmentService implements AutoCloseable {
 
   private final PreparedStatement selectDepartments;
+  private final PreparedStatement selectDepartmentById;
 
   public DepartmentService(Connection connection) throws SQLException {
     selectDepartments = connection.prepareStatement(Constant.SELECT_DEPARTMENTS);
+    selectDepartmentById = connection.prepareStatement(Constant.SELECT_DEPARTMENT_BY_ID);
   }
 
   @Override
   public void close() throws SQLException {
     selectDepartments.close();
-    ;
   }
 
   public List<Department> getAll() {
@@ -48,5 +49,34 @@ public class DepartmentService implements AutoCloseable {
     }
 
     return res;
+  }
+
+  public Department getById(int id) {
+    Department department = null;
+
+    try {
+
+      selectDepartmentById.clearParameters();
+      selectDepartmentById.setInt(1, id);
+
+      ResultSet resultSet = selectDepartmentById.executeQuery();
+
+      if (resultSet.next()) {
+
+        department = new Department();
+
+        department.setDepartmentId(resultSet.getInt("department_id"));
+        department.setDepartmentName(resultSet.getString("department_name"));
+        department.setLocationId(resultSet.getInt("location_id"));
+        department.setManagerId(resultSet.getInt("manager_id"));
+
+      }
+
+    } catch (SQLException e) {
+      System.err.println("DB error: " + e.getMessage());
+    }
+
+
+    return department;
   }
 }
