@@ -15,6 +15,10 @@ public class DatabaseClient implements AutoCloseable {
   private final DepartmentService departmentService;
   private final JobGradesService jobGradesService;
   private final LocationService locationService;
+  private final CountriesService countriesService;
+  private final JobHistoryService jobHistoryService;
+  private final JobService jobService;
+  private final RegionService regionService;
 
   public DatabaseClient() throws SQLException {
     connection = DriverManager.getConnection(Constant.DB_URL, Constant.USERNAME, Constant.PASSWORD);
@@ -22,6 +26,10 @@ public class DatabaseClient implements AutoCloseable {
     departmentService = new DepartmentService(connection);
     jobGradesService = new JobGradesService(connection);
     locationService = new LocationService(connection);
+    countriesService = new CountriesService(connection);
+    jobHistoryService = new JobHistoryService(connection);
+    jobService = new JobService(connection);
+    regionService = new RegionService(connection);
   }
 
   @Override
@@ -41,6 +49,18 @@ public class DatabaseClient implements AutoCloseable {
   }
   public List<Location> getAllLocations() {
     return locationService.getAll();
+  }
+  public List<Countries> getAllCountries(){
+    return countriesService.getAll();
+  }
+  public List<JobHistory> getAllJobHistorys(){
+    return jobHistoryService.getAll();
+  }
+  public List<Job> gettAllJobs(){
+    return jobService.getAll();
+  }
+  public List<Region> getAllRegions(){
+    return regionService.getAll();
   }
 
 }

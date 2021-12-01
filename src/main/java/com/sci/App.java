@@ -3,6 +3,8 @@ package com.sci;
 import com.sci.models.*;
 
 import com.sci.services.DatabaseClient;
+
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -15,6 +17,10 @@ public class App {
       List<Department> departmentList = databaseClient.getAllDepartments();
       List<Jobgrades> jobgradeList = databaseClient.getAllJobgrades();
       List<Location> locationList = databaseClient.getAllLocations();
+      List<Countries> countryList = databaseClient.getAllCountries();
+      List<Job> jobList = databaseClient.gettAllJobs();
+      List<JobHistory> jobHistoryList = databaseClient.getAllJobHistorys();
+      List<Region> regionList = databaseClient.getAllRegions();
 
       System.out.println("Number of employees: " + employeeList.size());
       for (Employee employee : employeeList) {
@@ -38,6 +44,28 @@ public class App {
       System.out.println("Number of Locations: "+ locationList.size());
       for(Location locations : locationList){
         System.out.println(locations);
+      }
+      System.out.println("***********************");
+      System.out.println("number of countries: "+countryList.size());
+      for(Countries countries : countryList){
+        System.out.println(countries);
+      }
+
+      System.out.println("***********************");
+      System.out.println("number of jobs: "+jobList.size());
+      for(Job job : jobList){
+        System.out.println(job);
+      }
+      System.out.println("***********************");
+      System.out.println("number of jobHistory: "+jobHistoryList.size());
+      for(JobHistory jobHistory : jobHistoryList){
+        System.out.println(jobHistory);
+      }
+      System.out.println("***********************");
+      System.out.println("number of region: "+regionList.size());
+
+      for(Region region : regionList){
+        System.out.println(region);
       }
     }
   }

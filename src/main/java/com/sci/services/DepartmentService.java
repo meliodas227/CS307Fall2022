@@ -20,7 +20,6 @@ public class DepartmentService implements AutoCloseable {
   @Override
   public void close() throws SQLException {
     selectDepartments.close();
-    ;
   }
 
   public List<Department> getAll() {
