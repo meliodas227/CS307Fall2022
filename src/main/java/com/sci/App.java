@@ -4,7 +4,6 @@ import com.sci.models.*;
 
 import com.sci.services.DatabaseClient;
 
-import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 
