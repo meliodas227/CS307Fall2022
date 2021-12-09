@@ -42,9 +42,13 @@ public class Departments {
     }
 
     private static void handleUpdateById() throws SQLException {
+        System.out.print("enter department id: ");
         int departmentId = input.nextInt();
+        System.out.print("enter department name: ");
         String departmentName = input.next();
+        System.out.print("enter manager id: ");
         int managerId = input.nextInt();
+        System.out.print("enter location id: ");
         int locationId = input.nextInt();
         Department department = new Department();
         department.setDepartmentId(departmentId);
@@ -55,14 +59,19 @@ public class Departments {
     }
 
     private static void handleDeleteById() throws SQLException {
+        System.out.print("enter department id: ");
         int id = input.nextInt();
         db.deleteDepartmentById(id);
     }
 
     private static void handleInsert() throws SQLException {
+        System.out.print("enter department id: ");
         int departmentId = input.nextInt();
+        System.out.print("enter department name: ");
         String departmentName = input.next();
+        System.out.print("enter manager id: ");
         int managerId = input.nextInt();
+        System.out.print("enter location id: ");
         int locationId = input.nextInt();
         Department department = new Department();
         department.setDepartmentId(departmentId);
@@ -74,6 +83,7 @@ public class Departments {
     }
 
     private static void handleSelectById() {
+        System.out.print("enter department id: ");
         int id = input.nextInt();
         System.out.println(db.getDepartmentById(id));
     }

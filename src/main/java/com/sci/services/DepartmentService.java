@@ -1,6 +1,7 @@
 package com.sci.services;
 
 import com.sci.models.Department;
+import com.sci.models.Employee;
 import com.sci.utils.Constant;
 import com.sci.utils.Mapper;
 
