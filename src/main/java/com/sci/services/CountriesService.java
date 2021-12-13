@@ -12,8 +12,16 @@ import com.sci.utils.Constant;
 
 public class CountriesService implements AutoCloseable{
     private final PreparedStatement selectCounry;
+    private final PreparedStatement selectCountryById;
+    private final PreparedStatement deleteCountryById;
+    private final PreparedStatement updateCountryById;
+    private final PreparedStatement insertCountry;
     public CountriesService(Connection connection) throws SQLException{
         selectCounry = connection.prepareStatement(Constant.SELECT_COUNTRIES);
+        selectCountryById = connection.prepareStatement(Constant.SELECT_COUNTRY_BY_ID);
+        deleteCountryById = connection.prepareStatement(Constant.DELETE_COUNTRY_BY_ID);
+        updateCountryById = connection.prepareStatement(Constant.UPDATE_COUNTRY_BY_ID);
+        insertCountry = connection.prepareStatement(Constant.INSERT_COUNTRY);
     }
     @Override
     public void close() throws Exception {
@@ -42,5 +50,42 @@ public class CountriesService implements AutoCloseable{
         }
     
         return res;
+      }
+
+      public void updateById(Country country) throws SQLException{
+        updateCountryById.clearParameters();
+        updateCountryById.setString(1, country.getCountryName());
+        updateCountryById.setInt(2, country.getRegionId());
+        updateCountryById.setString(3, country.getCountryId());
+        updateCountryById.executeQuery();
+      }
+      public Country getById(String countryId) throws SQLException{
+        Country country = null;
+        try {
+          selectCountryById.clearParameters();
+          selectCountryById.setString(1, countryId);
+          ResultSet resultSet = selectCountryById.executeQuery();
+          if(resultSet.next()){
+            country = new Country();
+            country.setCountryId(countryId);
+            country.setCountryName(resultSet.getString("country_name"));
+            country.setRegionId(resultSet.getInt("region_id"));
+          }
+        } catch (Exception e) {
+          System.err.println("DB error: " + e.getMessage());
+        }
+        return country;
+      }
+      public void deleteById(String countryId) throws SQLException{
+        deleteCountryById.clearParameters();
+        deleteCountryById.setString(1, countryId);
+        deleteCountryById.executeQuery();
+      }
+      public void insert(Country country) throws SQLException{
+        insertCountry.clearParameters();
+        insertCountry.setString(1, country.getCountryId());
+        insertCountry.setString(2, country.getCountryName());
+        insertCountry.setInt(3, country.getRegionId());
+        insertCountry.executeQuery();
       }
 }

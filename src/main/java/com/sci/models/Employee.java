@@ -3,6 +3,7 @@ package com.sci.models;
 public class Employee {
 
   private int id;
+  private int departmentId;
   private String firstName;
   private String lastName;
   private int managerId;
@@ -12,6 +13,14 @@ public class Employee {
   private String jobId;
   private int salary;
   private double commetionPct;
+
+  public int getDepartmentId() {
+    return departmentId;
+  }
+
+  public void setDepartmentId(int departmentId) {
+    this.departmentId = departmentId;
+  }
 
   public String getFirstName() {
     return firstName;
@@ -97,7 +106,7 @@ public class Employee {
 
   @Override
   public String toString() {
-    return "Employee [commetionPct=" + commetionPct + ", email=" + email
+    return "Employee [commetionPct=" + commetionPct + ", departmentId=" + departmentId + ", email=" + email
         + ", firstName=" + firstName + ", hireDate=" + hireDate + ", id=" + id + ", jobId=" + jobId + ", lastName="
         + lastName + ", managerId=" + managerId + ", phoneNumber=" + phoneNumber + ", salary=" + salary + "]";
   }

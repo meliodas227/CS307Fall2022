@@ -20,6 +20,7 @@ public class Departments {
 //        4 = delete by Id and get values
 //        5 = update by id and get values
         int operation ;
+        System.out.println("enter 1:select_all , 2:select_by_id , 3:insert , 4:delete , 5:update , 0:exit");
         while((operation = input.nextInt()) != 0){
             switch (operation){
                 case 1:
@@ -38,6 +39,7 @@ public class Departments {
                     handleUpdateById();
                     break;
             }
+            System.out.println("enter 1:select_all , 2:select_by_id , 3:insert , 4:delete , 5:update , 0:exit");
         }
     }
 
