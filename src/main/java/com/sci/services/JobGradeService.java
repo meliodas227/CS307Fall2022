@@ -7,13 +7,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.text.html.HTMLDocument.HTMLReader.PreAction;
-
 import com.sci.models.JobGrade;
 import com.sci.utils.Constant;
 
-import oracle.jdbc.Const;
-import oracle.net.aso.j;
+
 
 public class JobGradeService implements AutoCloseable{
     private final PreparedStatement selectJobGrades;
