@@ -5,7 +5,7 @@ public class Order {
 
     @Override
     public String toString() {
-        return "OrderItems [customerId=" + customerId + ", orderId=" + orderId + ", price=" + price + "]";
+        return "Order [customerId=" + customerId + ", orderId=" + orderId + ", price=" + price + "]";
     }
 
     public int getOrderId() {

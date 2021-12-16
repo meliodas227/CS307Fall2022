@@ -13,14 +13,103 @@ public class App{
         input=new Scanner(System.in);
         db=new DataBaseClient();
         int operation;
+        System.out.println("1:customer , 2:Order , 3:order Items , 4:product , 0:exit");
         while ((operation=input.nextInt())!=0) {
             switch(operation){
-                case 1: handleSelectAllCustomers();
+                case 1:handleCustomer();
                 break;
-                case 2:handleInsertCustomer();
+                case 2:handleOrder();
+                break;
+                case 3:handleOrderItems();
+                break;
+                case 4:handleProduct();
                 break;
             }
-
+        System.out.println("1:customer , 2:Order , 3:order Items , 4:product , 0:exit");
+        }
+    }
+    public static void handleCustomer() throws SQLException{
+        input= new Scanner(System.in);
+        db=new DataBaseClient();
+        int operation;
+        System.out.println("enter 1:select_all , 2:select_by_id , 3:insert , 4:delete , 5:update , 0:exit");
+        while ((operation=input.nextInt())!=0) {
+            switch (operation) {
+                case 1: handleSelectAllCustomers();
+                break;
+                case 2:handleSelectCustomerById();
+                break;
+                case 3:handleInsertCustomer();
+                break;
+                case 4:handleDeleteCustomer();
+                break;
+                case 5:handleUpdateCustomer();
+                break;
+            }
+            System.out.println("enter 1:select_all , 2:select_by_id , 3:insert , 4:delete , 5:update , 0:exit");
+        }
+    }
+    public static void handleOrder() throws SQLException{
+        input= new Scanner(System.in);
+        db=new DataBaseClient();
+        int operation;
+        System.out.println("enter 1:select_all , 2:select_by_id , 3:insert , 4:delete , 5:update , 0:exit");
+        while ((operation=input.nextInt())!=0) {
+            switch (operation) {
+                case 1: handleSelectOrders();
+                break;
+                case 2:handleSelectOrderById();
+                break;
+                case 3:handleInsertOrder();
+                break;
+                case 4:handleDeleteOrder();
+                break;
+                case 5:handleUpdateOrder();                
+                break;
+            }
+            System.out.println("enter 1:select_all , 2:select_by_id , 3:insert , 4:delete , 5:update , 0:exit");
+        }
+    }
+    public static void handleOrderItems() throws SQLException{
+        input= new Scanner(System.in);
+        db=new DataBaseClient();
+        int operation;
+        System.out.println("enter 1:select_all , 2:select_by_id , 3:insert , 4:delete , 5:update , 0:exit");
+        while ((operation=input.nextInt())!=0) {
+            switch (operation) {
+                case 1: handleSelectOrderItems();
+                break;
+                case 2:handlegetOrderItemById();
+                break;
+                case 3:handleInsertOrderItem();
+                break;
+                case 4:handleDeleteOrderItem();
+                break;
+                case 5:handleOrderItemUpdate();
+                break;
+            }
+            System.out.println("enter 1:select_all , 2:select_by_id , 3:insert , 4:delete , 5:update , 0:exit");
+        }
+    }
+    public static void handleProduct() throws SQLException{
+        input= new Scanner(System.in);
+        db=new DataBaseClient();
+        int operation;
+        System.out.println("enter 1:select_all , 2:select_by_id , 3:insert , 4:delete , 5:update , 0:exit");
+        while ((operation=input.nextInt())!=0) {
+            switch (operation) {
+                case 1:handleSelectProducts();
+                break;
+                case 2:handleSelectProductsById();
+                break;
+                case 3:handleInsertProduct();
+                break;
+                case 4:handleDeleteProduct();
+                break;
+                case 5:handleUpdateProduct();
+                break;
+            }
+            System.out.println("enter 1:select_all , 2:select_by_id , 3:insert , 4:delete , 5:update , 0:exit");
         }
     }
     public static void handleUpdateCustomer() throws SQLException{
@@ -138,4 +227,36 @@ public class App{
         db.insertOrderItem(orderItems);
     }
 
+    public static void handleSelectProducts() throws SQLException{
+        List<Product> productList = db.getAllProducts();
+        for(Product product:productList){
+            System.out.println(product);
+        }
+    }
+    public static void handleSelectProductsById() throws SQLException{
+        System.out.print("enter product id: ");
+        int productId = input.nextInt();
+        System.out.println(db.getById(productId));
+    }
+    public static void handleDeleteProduct() throws SQLException{
+        System.out.print("enter product id: ");
+        int productId = input.nextInt();
+        db.deleteProduct(productId);
+    }
+    public static void handleInsertProduct() throws SQLException{
+        Product product = new Product();
+        System.out.println("enter product id, name, price: ");
+        product.setProductId(input.nextInt());
+        product.setName(input.next());
+        product.setPrice(input.nextInt());
+        db.insertProduct(product);
+    }
+    public static void handleUpdateProduct() throws SQLException{
+        Product product = new Product();
+        System.out.println("enter product id, name, price: ");
+        product.setProductId(input.nextInt());
+        product.setName(input.next());
+        product.setPrice(input.nextInt());
+        db.updateProduct(product);
+    }
 }

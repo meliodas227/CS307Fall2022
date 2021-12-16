@@ -1,7 +1,8 @@
 package com.sci.models;
 
 public class Product {
-    private int productId,price;
+    private int productId;
+    private int price;
     private String name;
    
     public int getProductId() {

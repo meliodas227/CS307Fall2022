@@ -39,6 +39,7 @@ public class ProductService implements AutoCloseable{
                 Product product = new Product();
                 product.setName(resultSet.getString("name"));
                 product.setProductId(resultSet.getInt("product_id"));
+                product.setPrice(resultSet.getInt("price"));
                 res.add(product);
             }
         } catch (Exception e) {
@@ -70,9 +71,9 @@ public class ProductService implements AutoCloseable{
     }
     public void insertProduct(Product product) throws SQLException{
         insertProduct.clearParameters();
-        insertProduct.setInt(3, product.getPrice());
-        insertProduct.setString(2, product.getName());
         insertProduct.setInt(1, product.getProductId());
+        insertProduct.setString(2, product.getName());
+        insertProduct.setInt(3, product.getPrice());        
         insertProduct.executeQuery();
     }
 }
